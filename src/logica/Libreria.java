@@ -51,72 +51,23 @@ public class Libreria {
         return false;
     }
     
+    //Cualquier tipo de libro será diferente a 1 - 3.
     public String listarLibrosTipo(int tipo){
         StringBuilder cadenita = new StringBuilder();
         for(Libro libro : catalogo){
-            if(libro != null && libro.getTipo() == tipo){
+            if(libro != null && 
+                    (libro.getTipo() == tipo || 
+                    (libro.getTipo() < 1 || libro.getTipo() > 3) && (tipo < 1 || tipo > 3))){
                 cadenita.append(listarLibro(libro));
             }
         }
         return cadenita.toString();
     }
     
-    public String listarLibrosPrecio(){
-        Libro[] copiaCatalogo = catalogo.clone();
-        StringBuilder cadenita = new StringBuilder();
-        Libro libroAuxiliar;
-        
-        for (int i = 0; i < copiaCatalogo.length && copiaCatalogo[i] != null; i++) {
-            for (int j = 0; j < copiaCatalogo.length && copiaCatalogo[j] != null; j++) {
-                if(calcularPrecio(copiaCatalogo[i]) < calcularPrecio(copiaCatalogo[j])){
-                    libroAuxiliar = copiaCatalogo[i];
-                    copiaCatalogo[i] = copiaCatalogo[j];
-                    copiaCatalogo[j] = libroAuxiliar;
-                }
-            }
-        }
-        
-        for(Libro libro : copiaCatalogo){
-            if(libro != null){
-                cadenita.append(listarLibro(libro));
-            }
-            else
-                break;
-        }
-        
-        return cadenita.toString();
-    }
-    
-    public String listarLibrosTitulo(){
-        StringBuilder cadenita = new StringBuilder();
-        Libro[] copiaCatalogo = catalogo.clone();
-        Libro auxiliar;
-        
-        for (int i = 0; i < copiaCatalogo.length && copiaCatalogo[i] != null; i++) {
-            for (int j = 0; j < copiaCatalogo.length && copiaCatalogo[j] != null; j++) {
-                if(copiaCatalogo[i].getTitulo().compareTo(copiaCatalogo[j].getTitulo()) < 0){
-                    auxiliar = copiaCatalogo[i];
-                    copiaCatalogo[i] = copiaCatalogo[j];
-                    copiaCatalogo[j] =  auxiliar;
-                }
-            }
-        }
-        
-        for(Libro libro : copiaCatalogo){
-            if(libro != null){
-                cadenita.append(listarLibro(libro));
-            }
-            else
-                break;
-        }
-        
-        return cadenita.toString();
-    }
-    
-    //Prepara un String con los datos del libro más el precio.
+    //Prepara un String con el titulo del libro junto con el precio
     private String listarLibro(Libro libro){
         StringBuilder cadenita = new StringBuilder();
-        cadenita.append(libro.toString());
+        cadenita.append("Titulo: " + libro.getTitulo() + '\n');
         cadenita.append("Precio: " + calcularPrecio(libro) + '\n');
         cadenita.append('\n');
         

@@ -17,12 +17,20 @@ public class proLibreria {
         Libro libro_2 = new Libro("Game of Thrones", 2, 350, 2);
         Libro libro_3 = new Libro("Rosario tijeras", 3, 250, 3);
         Libro libro_4 = new Libro("Paraíso Travel", 4, 125, 4);
+        Libro libro_5 = new Libro("Tipo 1", 5, 300, 1);
+        Libro libro_6 = new Libro("Tipo 2", 6, 500, 2);
+        Libro libro_7 = new Libro("Tipo 3", 7, 750, 3);
+        Libro libro_8 = new Libro("Tipo 4", 8, 662, 4);
         
         imprimirString("Características de los cuatro libros.");
         imprimirString(libro_1.toString());
         imprimirString(libro_2.toString());
         imprimirString(libro_3.toString());
         imprimirString(libro_4.toString());
+        imprimirString(libro_5.toString());
+        imprimirString(libro_6.toString());
+        imprimirString(libro_7.toString());
+        imprimirString(libro_8.toString());
         
         Libreria libreria = new Libreria();
         imprimirString("Agregar libros.");
@@ -30,24 +38,30 @@ public class proLibreria {
         imprimirString(libreria.agregarLibro(libro_2) == true ? "True" : "False");
         imprimirString(libreria.agregarLibro(libro_3) == true ? "True" : "False");
         imprimirString(libreria.agregarLibro(libro_4) == true ? "True" : "False");
+        imprimirString(libreria.agregarLibro(libro_5) == true ? "True" : "False");
+        imprimirString(libreria.agregarLibro(libro_6) == true ? "True" : "False");
+        imprimirString(libreria.agregarLibro(libro_7) == true ? "True" : "False");
+        imprimirString(libreria.agregarLibro(libro_8) == true ? "True" : "False");
         
         imprimirString("Busqueda por titulo.");
         imprimirString(libreria.buscarLibro(libro_1.getTitulo()).toString());
         imprimirString(libreria.buscarLibro(libro_2.getTitulo()).toString());
         imprimirString(libreria.buscarLibro(libro_3.getTitulo()).toString());
         imprimirString(libreria.buscarLibro(libro_4.getTitulo()).toString());
+        imprimirString(libreria.buscarLibro(libro_5.getTitulo()).toString());
+        imprimirString(libreria.buscarLibro(libro_6.getTitulo()).toString());
+        imprimirString(libreria.buscarLibro(libro_7.getTitulo()).toString());
+        imprimirString(libreria.buscarLibro(libro_8.getTitulo()).toString());
         
         imprimirString("Busqueda por codigo.");
         imprimirString(libreria.buscarLibro(libro_1.getCodigo()).toString());
         imprimirString(libreria.buscarLibro(libro_2.getCodigo()).toString());
         imprimirString(libreria.buscarLibro(libro_3.getCodigo()).toString());
         imprimirString(libreria.buscarLibro(libro_4.getCodigo()).toString());
-        
-        imprimirString("Listar por precio.");
-        imprimirString(libreria.listarLibrosPrecio());
-        
-        imprimirString("Listar por titulo.");
-        imprimirString(libreria.listarLibrosTitulo());
+        imprimirString(libreria.buscarLibro(libro_5.getCodigo()).toString());
+        imprimirString(libreria.buscarLibro(libro_6.getCodigo()).toString());
+        imprimirString(libreria.buscarLibro(libro_7.getCodigo()).toString());
+        imprimirString(libreria.buscarLibro(libro_8.getCodigo()).toString());
         
         imprimirString("Listar por tipo.");
         imprimirString("Tipo 1:");
@@ -58,9 +72,6 @@ public class proLibreria {
         imprimirString(libreria.listarLibrosTipo(3));
         imprimirString("Tipo indefinido:");
         imprimirString(libreria.listarLibrosTipo(4));
-        
-        imprimirString("Listar por titulo.");
-        imprimirString(libreria.listarLibrosTitulo());
     }
     
     public static void imprimirString(String texto){
