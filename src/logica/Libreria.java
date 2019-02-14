@@ -23,14 +23,18 @@ public class Libreria {
     }
     
     public Libro[] getCatalogo(){ return catalogo; }
+    public int getIndiceActual(){ return indiceActual; }
     
-    public Libro buscarLibro(String titulo){
+    public Libro[] buscarLibro(String titulo){
+        Libro[] librosEncontrados = new Libro[20];
+        int indice = 0;
         for(Libro libro : catalogo){
             if(libro != null && libro.getTitulo().equals(titulo)){
-                return catalogo[Arrays.asList(catalogo).indexOf(libro)];
+                librosEncontrados[indice] = libro;
+                indice++;
             }
         }
-        return null;
+        return librosEncontrados;
     }
     
     public Libro buscarLibro(int codigo){
@@ -52,17 +56,30 @@ public class Libreria {
     }
     
     //Cualquier tipo de libro será diferente a 1 - 3.
-    public String listarLibrosTipo(int tipo){
-        StringBuilder cadenita = new StringBuilder();
+    public Libro[] listarLibrosTipo(int tipo){
+        Libro[] libros = new Libro[150];
+        int indice = 0;
         for(Libro libro : catalogo){
-            if(libro != null && 
-                    (libro.getTipo() == tipo || 
-                    (libro.getTipo() < 1 || libro.getTipo() > 3) && (tipo < 1 || tipo > 3))){
-                cadenita.append(listarLibro(libro));
+            if(libro != null){
+                if(tipo == libro.getTipo()){
+                    libros[indice] = libro;
+                    indice++;
+                }
+                else if((tipo < 1 || tipo > 3) &&
+                        (libro.getTipo()  < 1 || libro.getTipo() > 3)){
+                    libros[indice] = libro;
+                    indice++;
+                }
+            }
+            else{
+                break;
             }
         }
-        return cadenita.toString();
+        return libros;
     }
+    
+    //Listar libros por tipo que devuelve un arreglo
+    
     
     //Prepara un String con el titulo del libro junto con el precio
     private String listarLibro(Libro libro){
@@ -74,7 +91,7 @@ public class Libreria {
         return cadenita.toString();
     }  
     
-    private int calcularPrecio(Libro libro){
+    public int calcularPrecio(Libro libro){
         int precioBase = 0, precioPagina = 0;
         
         if(libro.getTipo() == 1){
